@@ -26,11 +26,12 @@ namespace Hydra.WinForms
         public Form1()
         {
             Text = "HYDRA // CPU & Operações";
-            Size = new Size(1000, 680);
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
+            Bounds = Screen.PrimaryScreen!.WorkingArea;
             BackColor = Color.FromArgb(24, 26, 31);
             ForeColor = Color.WhiteSmoke;
             Font = new Font("Segoe UI", 9.5F);
+
 
             _loader = new HostLoader();
             _loader.Inicializar();
