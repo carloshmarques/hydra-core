@@ -23,3 +23,8 @@ ignore.*
 *.pem
 
 ###< carloshmarques/hydra-core ###
+
+.vs/
+bin/
+obj/
+*.user
