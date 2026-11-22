@@ -1,30 +1,39 @@
 ###> carloshmarques/hydra-core ###
 
-##### Folders #####
+# Build & Dependencies
 build/
 dist/
+bin/
+obj/
 node_modules/
 vendor/
 var/
 .tmp/
 
-# IDE's
+# IDEs & Editors
+.vs/
 .vscode/
 .idea/
+*.user
+*.suo
 
-
-##### Files #####
+# Ignored Files & Logs
 ignore.*
 *.ignore.*
+*.log
 
-# Environment variables and secret keys
+# Environment Variables & Secrets
 .env
 .env.test
+.env.local
 *.pem
+*.key
+
+# Local Workspace & Private Data
+_data/
+_docs/
+_drafts/
+*.sqlite
+*.db
 
 ###< carloshmarques/hydra-core ###
-
-.vs/
-bin/
-obj/
-*.user

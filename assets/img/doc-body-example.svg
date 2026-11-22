@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 620" width="840" height="620" font-family="Segoe UI, Consolas, monospace">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F17"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="headerAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#00FFA3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Principal -->
+  <rect width="840" height="620" rx="14" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Barra Superior -->
+  <rect x="24" y="20" width="792" height="38" rx="8" fill="#131C2E" stroke="#1E3A5F" stroke-width="1"/>
+  <circle cx="44" cy="39" r="5" fill="#00E5FF"/>
+  <text x="58" y="43" fill="#94A3B8" font-size="12" font-weight="bold">HYDRA-PROJECTS // DOCUMENTO INTERNO &amp; CORPO OPERACIONAL (v2.0)</text>
+  <text x="800" y="43" fill="#00FFA3" font-size="12" text-anchor="end">DOC-ID: #0001</text>
+
+  <!-- BLOCO 1: CABEÇALHO (TABELA DIARIO) -->
+  <rect x="24" y="72" width="792" height="128" rx="10" fill="#0F172A" stroke="#00E5FF" stroke-width="1.5"/>
+  <rect x="24" y="72" width="6" height="128" rx="3" fill="url(#headerAccent)"/>
+  <text x="44" y="96" fill="#00E5FF" font-size="11" font-weight="bold" letter-spacing="1.2">1. CABEÇALHO DO DOCUMENTO (TABELA DIARIO)</text>
+
+  <rect x="44" y="108" width="215" height="32" rx="6" fill="#1E293B"/>
+  <text x="54" y="128" fill="#94A3B8" font-size="11">DATA:</text>
+  <text x="96" y="128" fill="#F8FAFC" font-size="12" font-weight="bold">22/11/2026 09:29</text>
+
+  <rect x="271" y="108" width="280" height="32" rx="6" fill="#1E293B"/>
+  <text x="281" y="128" fill="#94A3B8" font-size="11">ENTIDADE:</text>
+  <text x="351" y="128" fill="#00FFA3" font-size="12" font-weight="bold">Hydra-Projects (#1)</text>
+
+  <rect x="563" y="108" width="237" height="32" rx="6" fill="#1E293B"/>
+  <text x="573" y="128" fill="#94A3B8" font-size="11">TIPO:</text>
+  <text x="613" y="128" fill="#38BDF8" font-size="12" font-weight="bold">Documento Interno</text>
+
+  <rect x="44" y="148" width="756" height="38" rx="6" fill="#162032" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="172" fill="#94A3B8" font-size="11" font-weight="bold">SUMÁRIO (ASSUNTO):</text>
+  <text x="195" y="172" fill="#FFFFFF" font-size="13" font-weight="bold">Consolidação da Estrutura Relacional e Corpo de Eventos</text>
+
+  <!-- BLOCO 2: CORPO DO DOCUMENTO (TABELA EVENTOS) -->
+  <rect x="24" y="214" width="792" height="172" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <rect x="24" y="214" width="6" height="172" rx="3" fill="#38BDF8"/>
+  <text x="44" y="238" fill="#38BDF8" font-size="11" font-weight="bold" letter-spacing="1.2">2. CORPO OPERACIONAL (TABELA EVENTOS)</text>
+
+  <!-- Badges dos Campos do Evento -->
+  <rect x="44" y="250" width="180" height="28" rx="5" fill="#1E293B"/>
+  <text x="54" y="268" fill="#94A3B8" font-size="10">TIPO:</text>
+  <text x="90" y="268" fill="#00E5FF" font-size="11" font-weight="bold">Arquitetura</text>
+
+  <rect x="234" y="250" width="175" height="28" rx="5" fill="#1E293B"/>
+  <text x="244" y="268" fill="#94A3B8" font-size="10">ORIGEM:</text>
+  <text x="298" y="268" fill="#F8FAFC" font-size="11" font-weight="bold">Access / HOME</text>
+
+  <rect x="419" y="250" width="165" height="28" rx="5" fill="#1E293B"/>
+  <text x="429" y="268" fill="#94A3B8" font-size="10">ESTADO_ID:</text>
+  <text x="502" y="268" fill="#00FFA3" font-size="11" font-weight="bold">#1 (Ativo)</text>
+
+  <rect x="594" y="250" width="206" height="28" rx="5" fill="#1E293B"/>
+  <text x="604" y="268" fill="#94A3B8" font-size="10">OCORR / INCID:</text>
+  <text x="702" y="268" fill="#FBBF24" font-size="11" font-weight="bold">#01 / N/A</text>
+
+  <!-- Caixa de Detalhe do Evento -->
+  <rect x="44" y="288" width="756" height="84" rx="6" fill="#162032" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="308" fill="#94A3B8" font-size="10" font-weight="bold">DETALHE DO EVENTO:</text>
+  <text x="56" y="330" fill="#E2E8F0" font-size="12">Limpeza de valores predefinidos nas chaves estrangeiras (IncidenciaID, EstadoID).</text>
+  <text x="56" y="350" fill="#E2E8F0" font-size="12">Integração de TipoEvento, Origem e EstadoID como corpo narrativo e técnico do registo.</text>
+
+  <!-- BLOCO 3: TÓPICOS, NOTAS & REFERÊNCIAS -->
+  <rect x="24" y="400" width="792" height="196" rx="10" fill="#0F172A" stroke="#00FFA3" stroke-width="1.2"/>
+  <text x="44" y="424" fill="#00FFA3" font-size="11" font-weight="bold" letter-spacing="1.2">3. DESDOBRAMENTO: TÓPICOS &amp; REFERÊNCIAS (DIARIOTOPICOS + REFERENCIAS)</text>
+
+  <rect x="44" y="438" width="756" height="42" rx="6" fill="#162032" stroke="#1E3A5F" stroke-width="1"/>
+  <text x="58" y="463" fill="#00E5FF" font-size="12" font-weight="bold">[TÓPICO 01]</text>
+  <text x="148" y="463" fill="#F1F5F9" font-size="12">Auditoria de baixo para cima: Registos → Referencias → Processos → Ocorrencias → Indice</text>
+
+  <rect x="44" y="488" width="756" height="42" rx="6" fill="#162032" stroke="#1E3A5F" stroke-width="1"/>
+  <text x="58" y="513" fill="#00E5FF" font-size="12" font-weight="bold">[TÓPICO 02]</text>
+  <text x="148" y="513" fill="#F1F5F9" font-size="12">Alinhamento de Incidencias e Eventos antes da geração de Formulário + Subformulário</text>
+
+  <rect x="44" y="538" width="756" height="42" rx="6" fill="#132229" stroke="#00FFA3" stroke-dasharray="4,3" stroke-width="1"/>
+  <text x="58" y="563" fill="#00FFA3" font-size="12" font-weight="bold">[REF #01]</text>
+  <text x="135" y="563" fill="#94A3B8" font-size="12">C:\Users\carlo\OneDrive\Desktop\Assets\exemplo_cabeçalho_v2.svg</text>
+</svg>

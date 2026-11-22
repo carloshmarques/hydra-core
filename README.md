@@ -1,18 +1,20 @@
 <!-- markdownlint-disable MD032 MD033-->
-<!-- Write your README.md file. Build something amazing! This README.md template can guide you to build your project documentation, but feel free to modify it as you wish 🥰 -->
-# 🔥 **carloshmarques/hydra-core**
+# 🔥 **hydra-core**
 
 <div align="center">
-  <!-- Change your logo -->
-  <a href="https://github.com/carloshmarques/hydra-core">
-    <img width="100%" src="https://i.imgur.com/SVvgxJF.png" alt="@carloshmarques/hydra-core's logo">
+    <a href="https://github.com">
+    <img width="100%" src="assets/img/hydra-logo.svg" alt="hydra-core logo">
   </a>
-  <br>
+
+  <br><br>
   <a href="https://github.com/carloshmarques/hydra-core/issues">
-    <img src="https://img.shields.io/github/issues/carloshmarques/hydra-core?color=0088ff&style=for-the-badge&logo=github" alt="carloshmarques/hydra-core's issues"/>
+    <img src="https://img.shields.io/github/issues/carloshmarques/hydra-core?color=0088ff&style=for-the-badge&logo=github" alt="hydra-core issues"/>
   </a>
   <a href="https://github.com/carloshmarques/hydra-core/pulls">
-    <img src="https://img.shields.io/github/issues-pr/carloshmarques/hydra-core?color=0088ff&style=for-the-badge&logo=github"  alt="carloshmarques/hydra-core's pull requests"/>
+    <img src="https://img.shields.io/github/issues-pr/carloshmarques/hydra-core?color=0088ff&style=for-the-badge&logo=github" alt="hydra-core pull requests"/>
+  </a>
+  <a href="LICENSE">
+    <img src="https://shields.io" alt="MIT License"/>
   </a>
 </div>
 
@@ -20,89 +22,85 @@
 
 ## 🤔 **About the project**
 
-* <!-- ... [WHY DID YOU CREATED THIS PROJECT?, MOTIVATION, PURPOSE, DESCRIPTION, OBJECTIVES, etc] -->
+**Hydra Core** is the central foundation of the Hydra architecture, built in C# (.NET). It provides a modular, decoupled core library alongside Console and Windows Forms interfaces, designed to manage environment drivers, configurations, and system workflows cleanly.
+
+* **Core Engine (`Hydra.Core`):** Encapsulates business logic, data models, and environment drivers independently from the UI.
+* **CLI Interface (`Hydra.Console`):** Lightweight command-line runner for automation, scripting, and headless execution.
+* **Desktop Interface (`Hydra.WinForms`):** Windows Forms client for visual interaction and local management.
 
 ---
 
 ## ⚡ **Installation**
 
-* <!-- ... [SHOW HOW YOUR PROJECT IS INSTALLED] -->
+1. **Prerequisites:**
+   * [.NET SDK](https://microsoft.com) (8.0 or newer recommended)
+   * Git
+
+2. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   cd hydra-core
+   ```
+
+3. **Restore dependencies and build the solution:**
+   ```bash
+   dotnet restore src/Hydra.sln
+   dotnet build src/Hydra.sln --configuration Release
+   ```
 
 ---
 
 ## 🚀 **Usage**
 
-* <!-- ... [SHOW HOW YOUR PROJECT IS USED] -->
+* **Run the Console application:**
+  ```bash
+  dotnet run --project src/Hydra.Console
+  ```
+
+* **Run the Windows Forms application:**
+  ```bash
+  dotnet run --project src/Hydra.WinForms
+  ```
 
 ---
 
 ## 🌲 **Project tree**
 
-<!-- ... [SHOW YOUR PROJECT TREE HERE IF USEFUL] -->
+```text
+hydra-core/
+├── .github/                # GitHub workflows, issue & PR templates
+├── assets/                 # Official project media and SVG diagrams
+│   └── img/
+├── data/                   # Official runtime data & default configurations
+├── src/                    # C# Solution and source projects
+│   ├── Hydra.Core/         # Core domain logic, models, and drivers
+│   ├── Hydra.Console/      # Command-line interface (CLI)
+│   ├── Hydra.WinForms/     # Desktop graphical interface
+│   └── Hydra.sln           # Visual Studio / .NET Solution file
+├── templates/              # Clean configuration and document templates
+├── .gitattributes          # Cross-platform line ending rules
+├── .gitignore              # Ignored build artifacts & private workspace folders
+├── CHANGELOG.md            # Version history (Keep a Changelog)
+├── LICENSE                 # MIT License
+└── README.md               # Project documentation
+```
 
 ---
 
 ## 📝 **Additional notes**
 
-* <!-- ... [ADD ADDITIONAL NOTES] -->
-
----
-
-## 📸 **Screenshots**
-
-<!-- ... [SOME DESCRIPTIVE IMAGES] -->
-
----
-
-## 🍰 **Supporters and donators**
-
-<!-- Change your small logo -->
-<a href="https://github.com/carloshmarques/hydra core">
-  <img alt="@carloshmarques/hydra core's brand logo without text" align="right" src="https://i.imgur.com/3qK1sie.png" width="18%" />
-</a>
-
-
-We are currently looking for new donators to help and maintain this project! ❤️
-
-By donating, you will help the development of this project, and *you will be featured in this hydra-core's README.md*, so everyone can see your kindness and visit your content ⭐.
-
-<a href="https://github.com/sponsors/carloshmarques"> <!-- MODIFY THIS LINK TO YOUR MAIN DONATING SITE IF YOU ARE NOT IN THE GITHUB SPONSORS PROGRAM -->
-  <img src="https://img.shields.io/badge/Sponsor-carloshmarques/hydra core-blue?logo=github-sponsors&style=for-the-badge&color=red">
-</a>
-
-<!-- LINK TO YOUR DONATING PAGES HERE -->
-
----
-
-hydra-core was generated from *[Josee9988/project-template](https://github.com/Josee9988/project-template)* 📚
-
----
-
-## 🕵️ Extra recommendations
-
-* <!-- If you recommend installing anything special, or if you recommend using X thing for the good use of your project...-->
-
----
-
-## 🎉 Was the CLI Tool helpful? Help us raise these numbers up
-
-[![GitHub followers](https://img.shields.io/github/followers/carloshmarques.svg?style=social)](https://github.com/carloshmarques)
-[![GitHub stars](https://img.shields.io/github/stars/carloshmarques/hydra-core.svg?style=social)](https://github.com/carloshmarques/hydra-core/stargazers)
-[![GitHub watchers](https://img.shields.io/github/watchers/carloshmarques/hydra-core.svg?style=social)](https://github.com/carloshmarques/hydra-core/watchers)
-[![GitHub forks](https://img.shields.io/github/forks/carloshmarques/hydra-core.svg?style=social)](https://github.com/carloshmarques/hydra-core/network/members)
-<!-- MODIFY THIS LINK TO YOUR MAIN DONATING SITE IF YOU ARE NOT IN THE GITHUB SPONSORS PROGRAM -->
-[![Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=github-sponsors&color=red&style=social)](https://github.com/sponsors/carloshmarques)
-
-Enjoy! 😃
+* This repository is currently in early active development (`0.x.y`). Public APIs and internal structures may evolve rapidly before `1.0.0`.
+* Local workspace folders (`_data/`, `_docs/`, `_drafts/`) are intentionally excluded from version control via `.gitignore`.
 
 ---
 
 ## ⚖️📝 **License and Changelog**
 
-See the license in the '**[LICENSE](LICENSE)**' file.
-
-Watch the changes in the '**[CHANGELOG.md](CHANGELOG.md)**' file.
+* Distributed under the **MIT License**. See **[LICENSE](LICENSE)** for more information.
+* Track all notable changes in **[CHANGELOG.md](CHANGELOG.md)**.
 
 ---
 
-_Made with a lot of ❤️❤️ by **[@carloshmarques](https://github.com/carloshmarques)**_
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/carloshmarques">@carloshmarques</a>
+</div>

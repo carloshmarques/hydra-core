@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 760" width="840" height="760" font-family="Segoe UI, Consolas, monospace">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F17"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="headerAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#00FFA3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Principal -->
+  <rect width="840" height="760" rx="14" fill="url(#bgGrad)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Barra Superior -->
+  <rect x="24" y="20" width="792" height="38" rx="8" fill="#131C2E" stroke="#1E3A5F" stroke-width="1"/>
+  <circle cx="44" cy="39" r="5" fill="#00E5FF"/>
+  <text x="58" y="43" fill="#94A3B8" font-size="12" font-weight="bold">HYDRA-PROJECTS // DOCUMENTO INTERNO COMPLETO (v4.0)</text>
+  <text x="800" y="43" fill="#00FFA3" font-size="12" text-anchor="end">DOC-ID: #0002</text>
+
+  <!-- BLOCO 1: CABEÇALHO (TABELA DIARIO) -->
+  <rect x="24" y="72" width="792" height="124" rx="10" fill="#0F172A" stroke="#00E5FF" stroke-width="1.5"/>
+  <rect x="24" y="72" width="6" height="124" rx="3" fill="url(#headerAccent)"/>
+  <text x="44" y="96" fill="#00E5FF" font-size="11" font-weight="bold" letter-spacing="1.2">1. CABEÇALHO DO DOCUMENTO (TABELA DIARIO)</text>
+
+  <rect x="44" y="108" width="215" height="30" rx="6" fill="#1E293B"/>
+  <text x="54" y="127" fill="#94A3B8" font-size="11">DATA:</text>
+  <text x="96" y="127" fill="#F8FAFC" font-size="12" font-weight="bold">22/11/2026 09:41</text>
+
+  <rect x="271" y="108" width="280" height="30" rx="6" fill="#1E293B"/>
+  <text x="281" y="127" fill="#94A3B8" font-size="11">ENTIDADE:</text>
+  <text x="351" y="127" fill="#00FFA3" font-size="12" font-weight="bold">KEELIX Core (#2)</text>
+
+  <rect x="563" y="108" width="237" height="30" rx="6" fill="#1E293B"/>
+  <text x="573" y="127" fill="#94A3B8" font-size="11">TIPO:</text>
+  <text x="613" y="127" fill="#38BDF8" font-size="12" font-weight="bold">Relatório de Rotina</text>
+
+  <rect x="44" y="146" width="756" height="36" rx="6" fill="#162032" stroke="#334155" stroke-width="1"/>
+  <text x="56" y="169" fill="#94A3B8" font-size="11" font-weight="bold">SUMÁRIO (ASSUNTO):</text>
+  <text x="195" y="169" fill="#FFFFFF" font-size="13" font-weight="bold">Sincronização de Segurança HOME → ESTANTE &amp; Verificação SQLite</text>
+
+  <!-- BLOCO 2: EVENTO MESTRE + SUBGAVETA EVENTODETALHES -->
+  <rect x="24" y="210" width="792" height="244" rx="10" fill="#0F172A" stroke="#38BDF8" stroke-width="1.5"/>
+  <rect x="24" y="210" width="6" height="244" rx="3" fill="#38BDF8"/>
+  <text x="44" y="234" fill="#38BDF8" font-size="11" font-weight="bold" letter-spacing="1.2">2. EVENTO MESTRE (TABELA EVENTOS - 1 REGISTO ÚNICO)</text>
+
+  <rect x="44" y="246" width="180" height="28" rx="5" fill="#1E293B"/>
+  <text x="54" y="264" fill="#94A3B8" font-size="10">TIPO:</text>
+  <text x="90" y="264" fill="#00E5FF" font-size="11" font-weight="bold">Backup &amp; Sync</text>
+
+  <rect x="234" y="246" width="185" height="28" rx="5" fill="#1E293B"/>
+  <text x="244" y="264" fill="#94A3B8" font-size="10">ORIGEM:</text>
+  <text x="298" y="264" fill="#F8FAFC" font-size="11" font-weight="bold">C:\Tools → E:\Hydra</text>
+
+  <rect x="429" y="246" width="165" height="28" rx="5" fill="#1E293B"/>
+  <text x="439" y="264" fill="#94A3B8" font-size="10">ESTADO_ID:</text>
+  <text x="512" y="264" fill="#00FFA3" font-size="11" font-weight="bold">#2 (Concluído)</text>
+
+  <rect x="604" y="246" width="196" height="28" rx="5" fill="#1E293B"/>
+  <text x="614" y="264" fill="#94A3B8" font-size="10">OCORR / INCID:</text>
+  <text x="712" y="264" fill="#FBBF24" font-size="11" font-weight="bold">#04 / #01</text>
+
+  <rect x="44" y="284" width="756" height="156" rx="8" fill="#131D2F" stroke="#38BDF8" stroke-dasharray="3,2" stroke-width="1"/>
+  <text x="58" y="304" fill="#7DD3FC" font-size="10" font-weight="bold" letter-spacing="1">↳ SUBGAVETA: EVENTODETALHES (N LINHAS LIGADAS POR EVENTO_ID = #01)</text>
+
+  <rect x="58" y="314" width="728" height="34" rx="5" fill="#19253B"/>
+  <text x="70" y="335" fill="#38BDF8" font-size="11" font-weight="bold">[DET #01]</text>
+  <text x="140" y="335" fill="#E2E8F0" font-size="12">Exportação das 10 tabelas do Access para snapshot de segurança antes de alterações.</text>
+
+  <rect x="58" y="356" width="728" height="34" rx="5" fill="#19253B"/>
+  <text x="70" y="377" fill="#38BDF8" font-size="11" font-weight="bold">[DET #02]</text>
+  <text x="140" y="377" fill="#E2E8F0" font-size="12">Verificação de integridade do DB_HydraProjects.sqlite em E:\Hydra\Systems\Core\Data\.</text>
+
+  <rect x="58" y="398" width="728" height="34" rx="5" fill="#19253B"/>
+  <text x="70" y="419" fill="#FBBF24" font-size="11" font-weight="bold">[DET #03]</text>
+  <text x="140" y="419" fill="#E2E8F0" font-size="12">Incidência #01 resolvida: corrigido namespace xmlns em 3 ficheiros SVG da pasta Assets.</text>
+
+  <!-- BLOCO 3: TÓPICOS, NOTAS & REFERÊNCIAS -->
+  <rect x="24" y="468" width="792" height="162" rx="10" fill="#0F172A" stroke="#00FFA3" stroke-width="1.2"/>
+  <text x="44" y="492" fill="#00FFA3" font-size="11" font-weight="bold" letter-spacing="1.2">3. DESDOBRAMENTO: TÓPICOS &amp; REFERÊNCIAS (DIARIOTOPICOS + REFERENCIAS)</text>
+
+  <rect x="44" y="504" width="756" height="34" rx="6" fill="#162032" stroke="#1E3A5F" stroke-width="1"/>
+  <text x="58" y="525" fill="#00E5FF" font-size="12" font-weight="bold">[NOTA 01]</text>
+  <text x="135" y="525" fill="#F1F5F9" font-size="12">A subgaveta EventoDetalhes evita duplicar cabeçalhos e reduz o tamanho final do ficheiro.</text>
+
+  <rect x="44" y="546" width="756" height="34" rx="6" fill="#162032" stroke="#1E3A5F" stroke-width="1"/>
+  <text x="58" y="567" fill="#00E5FF" font-size="12" font-weight="bold">[TÓPICO 01]</text>
+  <text x="148" y="567" fill="#F1F5F9" font-size="12">Próximo passo: gerar Formulário Mestre + Subformulário no Access para testar inserção.</text>
+
+  <rect x="44" y="588" width="756" height="32" rx="6" fill="#132229" stroke="#00FFA3" stroke-dasharray="4,3" stroke-width="1"/>
+  <text x="58" y="608" fill="#00FFA3" font-size="12" font-weight="bold">[REF #02]</text>
+  <text x="135" y="608" fill="#94A3B8" font-size="12">E:\Hydra\Systems\Core\Data\DB_HydraProjects.sqlite</text>
+
+  <!-- BLOCO 4: RODAPÉ (FECHO, ASSINATURA & DESTINO) -->
+  <rect x="24" y="644" width="792" height="96" rx="10" fill="#0D1422" stroke="#64748B" stroke-width="1.2"/>
+  <text x="44" y="666" fill="#94A3B8" font-size="11" font-weight="bold" letter-spacing="1.2">4. RODAPÉ &amp; FECHO DO DOCUMENTO (CAMPOS DE CONTROLO DO DIARIO)</text>
+
+  <rect x="44" y="676" width="235" height="26" rx="5" fill="#1E293B"/>
+  <text x="54" y="693" fill="#94A3B8" font-size="10">AUTOR (CADASTRO):</text>
+  <text x="166" y="693" fill="#F8FAFC" font-size="11" font-weight="bold">USR_001 (Carlos)</text>
+
+  <rect x="289" y="676" width="245" height="26" rx="5" fill="#1E293B"/>
+  <text x="299" y="693" fill="#94A3B8" font-size="10">ESTADO DOC:</text>
+  <text x="374" y="693" fill="#00FFA3" font-size="11" font-weight="bold">Consolidado (v4.0)</text>
+
+  <rect x="544" y="676" width="256" height="26" rx="5" fill="#1E293B"/>
+  <text x="554" y="693" fill="#94A3B8" font-size="10">FECHO:</text>
+  <text x="600" y="693" fill="#38BDF8" font-size="11" font-weight="bold">22/11/2026 09:41 WET</text>
+
+  <text x="44" y="726" fill="#64748B" font-size="11">DESTINO DE ARQUIVO (INDICE): E:\Hydra\Systems\Core\Docs_Md\DOC-0002.md</text>
+  <text x="800" y="726" fill="#00E5FF" font-size="11" text-anchor="end">ASSINATURA KEELIX: OK</text>
+</svg>

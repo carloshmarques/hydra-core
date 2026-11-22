@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="topBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="accentGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E68C" />
+      <stop offset="100%" stop-color="#00BFA5" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo Base -->
+  <rect width="1280" height="720" fill="#0B0F17" />
+
+  <!-- BARRA SUPERIOR SIDE (Cabeçalho Institucional) -->
+  <rect x="0" y="0" width="1280" height="64" fill="url(#topBar)" />
+  <line x1="0" y1="64" x2="1280" y2="64" stroke="#00BFA5" stroke-width="2" />
+  <circle cx="34" cy="32" r="14" fill="#00E68C" />
+  <text x="60" y="38" font-family="Segoe UI, sans-serif" font-weight="800" font-size="22" fill="#F8FAFC">HYDRA OS</text>
+  <text x="182" y="37" font-family="Consolas, monospace" font-size="13" fill="#00E68C">// PAINEL OPERACIONAL SIDE</text>
+
+  <!-- Meteorologia Amadora + Relógio Digital -->
+  <rect x="870" y="14" width="215" height="36" rx="6" fill="#0B0F17" stroke="#334155" />
+  <text x="977" y="37" font-family="Segoe UI, sans-serif" font-size="14" fill="#38BDF8" text-anchor="middle">AMADORA // 15°C Céu Limpo</text>
+  <rect x="1100" y="14" width="160" height="36" rx="6" fill="#00BFA5" />
+  <text x="1180" y="38" font-family="Consolas, monospace" font-weight="700" font-size="18" fill="#0B0F17" text-anchor="middle">19:20 // SÁB</text>
+
+  <!-- COLUNA ESQUERDA (~70% - Zona de Trabalho + Notas + CLI) -->
+  <rect x="16" y="80" width="860" height="370" rx="10" fill="#131926" stroke="#1E293B" stroke-width="2" />
+  <rect x="16" y="80" width="860" height="38" rx="10" fill="#1E293B" />
+  <text x="34" y="104" font-family="Segoe UI, sans-serif" font-weight="700" font-size="14" fill="#F8FAFC">ÁREA ATIVA: DOM_FIN // MOVIMENTOS &amp; REGISTOS</text>
+  <text x="858" y="104" font-family="Consolas, monospace" font-size="12" fill="#00E68C" text-anchor="end">SQLite CPU: 23 MB RAM</text>
+
+  <!-- Linhas simuladas da Grelha -->
+  <line x1="32" y1="150" x2="860" y2="150" stroke="#1E293B" stroke-width="1" />
+  <text x="34" y="142" font-family="Consolas, monospace" font-size="13" fill="#94A3B8">21/11/2026 | DOM_FIN | Compras Pingo Doce (Nota 2) | 22,43 € | Scan2026-11-21_170748.pdf</text>
+  <line x1="32" y1="184" x2="860" y2="184" stroke="#1E293B" stroke-width="1" />
+  <text x="34" y="176" font-family="Consolas, monospace" font-size="13" fill="#94A3B8">21/11/2026 | DOM_FIN | Café na Joana                  |  0,90 € | Concluido</text>
+  <line x1="32" y1="218" x2="860" y2="218" stroke="#1E293B" stroke-width="1" />
+  <text x="34" y="210" font-family="Consolas, monospace" font-size="13" fill="#64748B">[Linha rápida para escrever notas / lançamentos diretos...]</text>
+
+  <!-- CONSOLA CLI INTERATIVA EM BAIXO -->
+  <rect x="16" y="466" width="860" height="238" rx="10" fill="#090D14" stroke="#00BFA5" stroke-width="1.5" />
+  <rect x="16" y="466" width="860" height="32" rx="10" fill="#0F172A" />
+  <text x="34" y="487" font-family="Consolas, monospace" font-weight="700" font-size="13" fill="#00E68C">TERMINAL CLI INTEGRADO (HYDRA SHELL)</text>
+  <text x="34" y="522" font-family="Consolas, monospace" font-size="13" fill="#94A3B8">[19:20:01] CPU SQLite montado com sucesso (3 tabelas ativas).</text>
+  <text x="34" y="544" font-family="Consolas, monospace" font-size="13" fill="#94A3B8">[19:20:02] Session Manager ativo // RAM -&gt; ROM sincronizada.</text>
+  <rect x="28" y="654" width="836" height="36" rx="6" fill="#131926" stroke="#00E68C" />
+  <text x="42" y="677" font-family="Consolas, monospace" font-size="14" fill="#00E68C">carlo@hydra:~$ _  (escreve comando e prime Enter)</text>
+
+  <!-- COLUNA DIREITA (~30% - CARTÕES SIDE: TICKET + 5 ÁREAS PIVOT + MINI-TIPS) -->
+  <!-- 1. Cartão Senha / Foco Ativo -->
+  <rect x="892" y="80" width="372" height="106" rx="10" fill="#00BFA5" />
+  <text x="912" y="108" font-family="Segoe UI, sans-serif" font-weight="700" font-size="13" fill="#0B0F17">TAREFA / TICKET EM CURSO</text>
+  <text x="912" y="152" font-family="Segoe UI, sans-serif" font-weight="900" font-size="34" fill="#0B0F17">A-042 // DOM_FIN</text>
+  <text x="912" y="174" font-family="Segoe UI, sans-serif" font-weight="600" font-size="13" fill="#0F172A">Fecho de talões &amp; nomenclatura</text>
+
+  <!-- 2. As 5 Áreas Pivot (Cartões de Navegação Rápida) -->
+  <rect x="892" y="200" width="372" height="330" rx="10" fill="#131926" stroke="#1E293B" stroke-width="2" />
+  <text x="912" y="228" font-family="Segoe UI, sans-serif" font-weight="700" font-size="14" fill="#F8FAFC">5 ÁREAS PIVOT (NUCLEÓTIDOS)</text>
+
+  <rect x="910" y="242" width="336" height="46" rx="6" fill="#1E293B" stroke="#00E68C" stroke-width="1.5" />
+  <text x="928" y="270" font-family="Segoe UI, sans-serif" font-weight="700" font-size="15" fill="#00E68C">01. DOM_FIN  — Finanças &amp; Talões</text>
+
+  <rect x="910" y="298" width="336" height="46" rx="6" fill="#1E293B" />
+  <text x="928" y="326" font-family="Segoe UI, sans-serif" font-weight="600" font-size="15" fill="#E2E8F0">02. DOM_ALIM — Alimentação &amp; Notas</text>
+
+  <rect x="910" y="354" width="336" height="46" rx="6" fill="#1E293B" />
+  <text x="928" y="382" font-family="Segoe UI, sans-serif" font-weight="600" font-size="15" fill="#E2E8F0">03. DOM_EDUC — Educação &amp; Código</text>
+
+  <rect x="910" y="410" width="336" height="46" rx="6" fill="#1E293B" />
+  <text x="928" y="438" font-family="Segoe UI, sans-serif" font-weight="600" font-size="15" fill="#E2E8F0">04. DOM_HAB  — Habitação &amp; Casa</text>
+
+  <rect x="910" y="466" width="336" height="46" rx="6" fill="#1E293B" />
+  <text x="928" y="494" font-family="Segoe UI, sans-serif" font-weight="600" font-size="15" fill="#E2E8F0">05. DOM_TRAB — Trabalho &amp; Projetos</text>
+
+  <!-- 3. Mini-Reprodutor de Conselhos / Tips de Saúde (Ciclo de Osíris) -->
+  <rect x="892" y="546" width="372" height="158" rx="10" fill="#18122B" stroke="#9C27B0" stroke-width="1.5" />
+  <text x="912" y="574" font-family="Segoe UI, sans-serif" font-weight="700" font-size="13" fill="#E040FB">CONSELHO &amp; SAÚDE // CICLO OSÍRIS</text>
+  <text x="912" y="608" font-family="Segoe UI, sans-serif" font-size="14" fill="#F8FAFC">Pausa ativa recomendada: alonga os</text>
+  <text x="912" y="630" font-family="Segoe UI, sans-serif" font-size="14" fill="#F8FAFC">ombros, hidrata-te e descansa a vista</text>
+  <text x="912" y="652" font-family="Segoe UI, sans-serif" font-size="14" fill="#F8FAFC">longe do ecrã após 90 min de código.</text>
+  <rect x="912" y="674" width="120" height="5" rx="2.5" fill="#E040FB" />
+</svg>
