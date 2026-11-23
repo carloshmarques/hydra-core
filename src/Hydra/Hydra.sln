@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37906.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra", "Hydra.csproj", "{8F4F0793-7E4A-4623-8C45-A9CCD0905ED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hydra.Kernel", "..\Hydra.Kernel\Hydra.Kernel.csproj", "{16396DD7-2B67-4DFD-812D-3571E7E48CF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F4F0793-7E4A-4623-8C45-A9CCD0905ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4F0793-7E4A-4623-8C45-A9CCD0905ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4F0793-7E4A-4623-8C45-A9CCD0905ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4F0793-7E4A-4623-8C45-A9CCD0905ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16396DD7-2B67-4DFD-812D-3571E7E48CF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16396DD7-2B67-4DFD-812D-3571E7E48CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16396DD7-2B67-4DFD-812D-3571E7E48CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16396DD7-2B67-4DFD-812D-3571E7E48CF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34640899-A30F-487C-9A03-3EF8D1AEEE4C}
+	EndGlobalSection
+EndGlobal

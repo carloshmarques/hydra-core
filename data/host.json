@@ -1,0 +1,20 @@
+{
+  "first_use": false,
+  "aplicacao": {
+    "aplicacao_id": 1,
+    "nome": "Hydra",
+    "versao": "0.0.1",
+    "caminho_base": "./",
+    "ativa": 1,
+    "atualizada_em": "2026-11-22 17:55:00"
+  },
+  "host": {
+    "host_id": 1,
+    "hostname": "HOME",
+    "utilizador_so": "carlo",
+    "sistema_operativo": "Windows 11",
+    "idioma": "pt-PT",
+    "fuso_horario": "Europe/Lisbon",
+    "atualizado_em": "2026-11-23 18:26:57"
+  }
+}
