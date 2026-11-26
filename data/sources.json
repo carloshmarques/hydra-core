@@ -1,0 +1,19 @@
+{
+  "manifest_version": "1.0",
+  "owner": "carlo@Home",
+  "repositories": [
+    {
+      "id": "hydra-core",
+      "branch": "main",
+      "repo_url": "https://github.com",
+      "release_mirror": "mega://hydra-releases/hydra-core-v0.0.1.7z",
+      "local_target": "C:\\Users\\carlo\\source\\repos\\hydra-core"
+    },
+    {
+      "id": "hydra-media-pack",
+      "branch": "release",
+      "release_mirror": "mega://hydra-releases/hydra-media-assets.7z",
+      "local_target": "H:\\05_ARCHIVE_STAGING\\media-pack"
+    }
+  ]
+}

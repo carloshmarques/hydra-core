@@ -1,0 +1,73 @@
+[2026-11-25 03:32:50] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 03:33:34] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 03:35:12] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 03:35:13] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-25 03:35:13] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-25 03:35:14] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-25 03:35:14] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-25 03:35:17] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-25 03:35:56] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-25 03:36:23] [carlo] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-25 04:08:20] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:09:30] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:09:41] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:13:07] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:16:00] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:16:25] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:32:36] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:33:53] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:37:57] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:38:57] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:42:29] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:43:11] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:47:55] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:48:41] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:52:35] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:53:07] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:54:41] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:55:08] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 04:57:31] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 04:59:41] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 05:02:46] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:03:51] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 05:10:24] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:11:52] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 05:16:59] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:17:38] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 05:22:16] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:22:54] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 05:25:03] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:25:04] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-25 05:25:05] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-25 05:25:06] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-25 05:25:06] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-25 05:25:09] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-25 05:25:23] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-25 05:25:52] [carlo] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-25 05:43:11] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 05:43:12] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-25 05:43:13] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-25 05:43:14] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-25 05:43:14] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-25 05:43:16] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-25 05:44:09] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-25 05:44:28] [carlo] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-25 23:00:17] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 23:00:20] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-25 23:00:20] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-25 23:00:22] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-25 23:00:22] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-25 23:00:25] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-25 23:00:29] [system] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-25 23:00:50] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 23:00:51] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-25 23:00:52] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-25 23:00:52] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-25 23:00:52] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-25 23:00:55] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-25 23:01:15] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-25 23:01:30] [carlo] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-25 23:03:52] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 23:04:17] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-25 23:25:03] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-25 23:25:39] [system] [USER_LOGOUT] Session closed for 'system'.

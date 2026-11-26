@@ -1,0 +1,48 @@
+[2026-11-26 12:51:34] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 12:55:49] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-26 14:57:53] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 14:58:15] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-26 14:58:20] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 15:04:16] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-26 20:27:55] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 20:28:20] [system] [USER_LOGOUT] Session closed for 'system'.
+[2026-11-26 20:28:59] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 20:29:01] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-26 20:29:01] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-26 20:29:03] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-26 20:29:03] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-26 20:29:05] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-26 20:29:14] [system] [SESSION_AUTO_SAVE] Automatic RAM -> ROM consolidation on application exit.
+[2026-11-26 20:30:20] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 20:30:21] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-26 20:30:22] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-26 20:30:22] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-26 20:30:22] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-26 20:30:25] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-26 20:30:42] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-26 20:31:04] [carlo] [USER_LOGOUT] Session closed for 'carlo'.
+[2026-11-26 20:31:12] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 20:31:13] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-26 20:31:14] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-26 20:31:14] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-26 20:31:15] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-26 20:31:17] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-26 20:31:32] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-26 20:32:27] [carlo] [USER_LOGOUT] Session closed for 'carlo'.
+[2026-11-26 20:57:37] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 20:57:39] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-26 20:57:39] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-26 20:57:41] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-26 20:57:41] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-26 20:57:43] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-26 20:57:59] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-26 20:58:41] [carlo] [USER_LOGOUT] Session closed for 'carlo'.
+[2026-11-26 21:03:35] [system] [SESSION_MANAGER_START] Active data directory: C:\Users\carlo\source\repos\hydra-core\data
+[2026-11-26 21:03:36] [system] [BOOT_STEP_1] First use: _data template cloned to data staging.
+[2026-11-26 21:03:37] [system] [BOOT_STEP_2] host.json initialized from defaults.cfg.
+[2026-11-26 21:03:37] [system] [BOOT_STEP_3] SQLite tables (aplicacao + host) synced to host.json.
+[2026-11-26 21:03:37] [system] [INTEGRITY_CHECK] Integrity check failed: missing template source files in _data.
+[2026-11-26 21:03:46] [system] [AUTH_PROMPT] Waiting for user credentials.
+[2026-11-26 21:04:02] [system] [AUTH_FAILED] Invalid credentials for 'CARLO'
+[2026-11-26 21:04:19] [carlo] [USER_LOGIN] User 'carlo' authenticated with role [su].
+[2026-11-26 21:04:50] [carlo] [USER_LOGOUT] Session closed for 'carlo'.

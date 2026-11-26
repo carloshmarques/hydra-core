@@ -1,0 +1,297 @@
+{
+  "date": "2026-11-26",
+  "active_user": "carlo",
+  "role": "su",
+  "total_events": 48,
+  "updated_at": "2026-11-26 21:04:50",
+  "events": [
+    {
+      "timestamp": "2026-11-26 12:51:34",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 12:55:49",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-26 14:57:53",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 14:58:15",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-26 14:58:20",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 15:04:16",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-26 20:27:55",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 20:28:20",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-26 20:28:59",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 20:29:01",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-26 20:29:01",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-26 20:29:03",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-26 20:29:03",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-26 20:29:05",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-26 20:29:14",
+      "user": "system",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:20",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 20:30:21",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:22",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:22",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:22",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:25",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-26 20:30:42",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:04",
+      "user": "carlo",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'carlo'."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:12",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 20:31:13",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:14",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:14",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:15",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:17",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-26 20:31:32",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-26 20:32:27",
+      "user": "carlo",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'carlo'."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:37",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 20:57:39",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:39",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:41",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:41",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:43",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-26 20:57:59",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-26 20:58:41",
+      "user": "carlo",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'carlo'."
+    },
+    {
+      "timestamp": "2026-11-26 21:03:35",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-26 21:03:36",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-26 21:03:37",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-26 21:03:37",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-26 21:03:37",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-26 21:03:46",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-26 21:04:02",
+      "user": "system",
+      "type": "AUTH_FAILED",
+      "detail": "Invalid credentials for 'CARLO'"
+    },
+    {
+      "timestamp": "2026-11-26 21:04:19",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-26 21:04:50",
+      "user": "carlo",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'carlo'."
+    }
+  ]
+}

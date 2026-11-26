@@ -1,0 +1,447 @@
+{
+  "date": "2026-11-25",
+  "active_user": "system",
+  "role": "guest",
+  "total_events": 73,
+  "updated_at": "2026-11-25 23:25:39",
+  "events": [
+    {
+      "timestamp": "2026-11-25 03:32:50",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 03:33:34",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:12",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 03:35:13",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:13",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:14",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:14",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:17",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-25 03:35:56",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-25 03:36:23",
+      "user": "carlo",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-25 04:08:20",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:09:30",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:09:41",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:13:07",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:16:00",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:16:25",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:32:36",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:33:53",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:37:57",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:38:57",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:42:29",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:43:11",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:47:55",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:48:41",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:52:35",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:53:07",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:54:41",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:55:08",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 04:57:31",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 04:59:41",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 05:02:46",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:03:51",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 05:10:24",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:11:52",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 05:16:59",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:17:38",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 05:22:16",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:22:54",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:03",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:25:04",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:05",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:06",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:06",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:09",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:23",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-25 05:25:52",
+      "user": "carlo",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-25 05:43:11",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 05:43:12",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-25 05:43:13",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-25 05:43:14",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-25 05:43:14",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-25 05:43:16",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-25 05:44:09",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-25 05:44:28",
+      "user": "carlo",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:17",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 23:00:20",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:20",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:22",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:22",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:25",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:29",
+      "user": "system",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:50",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 23:00:51",
+      "user": "system",
+      "type": "BOOT_STEP_1",
+      "detail": "First use: _data template cloned to data staging."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:52",
+      "user": "system",
+      "type": "BOOT_STEP_2",
+      "detail": "host.json initialized from defaults.cfg."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:52",
+      "user": "system",
+      "type": "BOOT_STEP_3",
+      "detail": "SQLite tables (aplicacao + host) synced to host.json."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:52",
+      "user": "system",
+      "type": "INTEGRITY_CHECK",
+      "detail": "Integrity check failed: missing template source files in _data."
+    },
+    {
+      "timestamp": "2026-11-25 23:00:55",
+      "user": "system",
+      "type": "AUTH_PROMPT",
+      "detail": "Waiting for user credentials."
+    },
+    {
+      "timestamp": "2026-11-25 23:01:15",
+      "user": "carlo",
+      "type": "USER_LOGIN",
+      "detail": "User 'carlo' authenticated with role [su]."
+    },
+    {
+      "timestamp": "2026-11-25 23:01:30",
+      "user": "carlo",
+      "type": "SESSION_AUTO_SAVE",
+      "detail": "Automatic RAM -> ROM consolidation on application exit."
+    },
+    {
+      "timestamp": "2026-11-25 23:03:52",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 23:04:17",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    },
+    {
+      "timestamp": "2026-11-25 23:25:03",
+      "user": "system",
+      "type": "SESSION_MANAGER_START",
+      "detail": "Active data directory: C:\\Users\\carlo\\source\\repos\\hydra-core\\data"
+    },
+    {
+      "timestamp": "2026-11-25 23:25:39",
+      "user": "system",
+      "type": "USER_LOGOUT",
+      "detail": "Session closed for 'system'."
+    }
+  ]
+}

@@ -54,10 +54,15 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CryptoVaultService.cs" />
     <Compile Include="EmphaticPauseService.cs" />
+    <Compile Include="EventHorizonService.cs" />
     <Compile Include="HostDriverService.cs" />
+    <Compile Include="HydraLanguageService.cs" />
     <Compile Include="HydraVoiceService.cs" />
+    <Compile Include="IntegrityService.cs" />
+    <Compile Include="OsirisMoodCycler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
+    <Compile Include="TerminalCommandService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

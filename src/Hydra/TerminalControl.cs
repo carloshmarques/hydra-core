@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Hydra.Kernel;
 
@@ -8,304 +11,474 @@ namespace Hydra
 {
     public partial class TerminalControl : UserControl
     {
+        private enum TerminalState
+        {
+            BootNarrative,
+            AwaitingUsername,
+            AwaitingPassword,
+            InteractiveShell
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+        private const int WM_SETREDRAW = 0x0b;
+
         private readonly RichTextBox _rtb;
         private readonly Timer _narrativeTimer;
+        private readonly Timer _cursorTimer;
         private readonly Queue<string> _narrativeQueue = new Queue<string>();
-
-        private readonly CryptoVaultService _vault = new CryptoVaultService();
-        private readonly HostDriverService _driver = new HostDriverService();
+        private readonly List<string> _lineBuffer = new List<string>();
         private readonly HydraVoiceService _voice;
         private readonly SessionManager _session;
+        private readonly TerminalCommandService _commands;
+        private readonly EventHorizonService _events;
+        private readonly CryptoVaultService _vault = new CryptoVaultService();
+        private readonly string _sqlitePath;
 
-        private enum PromptStage { Narrative, Username, Password, Authenticated }
-        private PromptStage _stage = PromptStage.Narrative;
+        private List<string> _activeDecodeFrames = null;
+        private int _activeDecodeIndex = 0;
 
-        private string _enteredUser = string.Empty;
-        private string _enteredPass = string.Empty;
-        private int _inputStartIndex = 0;
+        private TerminalState _state = TerminalState.BootNarrative;
+        private string _currentInput = string.Empty;
+        private string _pendingUsername = string.Empty;
+        private bool _isFirstTimeSetup = false;
+        private bool _cursorVisible = true;
 
         public event Action<string> LoginSucceeded;
+        public event Action LogoutRequested;
+        public event Action RebootRequested;
+        public event Action PowerOffRequested;
 
-        public TerminalControl(HydraVoiceService voice, SessionManager session)
+        public TerminalControl(
+            HydraVoiceService voice = null,
+            SessionManager session = null,
+            TerminalCommandService commands = null,
+            EventHorizonService events = null)
         {
             InitializeComponent();
 
             _voice = voice ?? new HydraVoiceService();
             _session = session ?? new SessionManager();
+            _events = events ?? new EventHorizonService();
+            _commands = commands ?? new TerminalCommandService(_session, new EmphaticPauseService());
+
+            var driver = new HostDriverService();
+            _sqlitePath = Path.Combine(driver.ActiveDataDir, "sistema.sqlite");
 
             this.BackColor = Color.Black;
-            this.Padding = new Padding(12);
+            this.ForeColor = Color.White;
+            this.DoubleBuffered = true;
 
             _rtb = new RichTextBox
             {
                 Dock = DockStyle.Fill,
                 BackColor = Color.Black,
-                ForeColor = Color.FromArgb(220, 230, 240),
+                ForeColor = Color.FromArgb(215, 225, 235),
                 BorderStyle = BorderStyle.None,
-                Font = new Font("Consolas", 11F, FontStyle.Regular),
+                ReadOnly = true,
                 ScrollBars = RichTextBoxScrollBars.None,
                 WordWrap = false,
-                ReadOnly = true,
-                TabStop = true
+                TabStop = true,
+                Font = new Font("Consolas", 11F, FontStyle.Regular)
             };
-            _rtb.KeyDown += Rtb_KeyDown;
+
             _rtb.KeyPress += Rtb_KeyPress;
+            _rtb.KeyDown += Rtb_KeyDown;
             this.Controls.Add(_rtb);
 
-            _narrativeTimer = new Timer { Interval = 320 };
+            _narrativeTimer = new Timer { Interval = 140 };
             _narrativeTimer.Tick += NarrativeTimer_Tick;
-        }
 
-        private string GetHostPrompt()
-        {
-            string host = Environment.MachineName.ToLowerInvariant();
-            string winUser = Environment.UserName.ToLowerInvariant();
-            return $"{host}@{winUser}:~$ ";
-        }
-
-        private string GetHydraPrompt(string username)
-        {
-            return $"hydra@{username.Trim().ToLowerInvariant()}:~$ ";
-        }
-
-        public (int MaxLines, int MaxChars) GetTerminalCapacity(Font font, Size containerSize)
-        {
-            Size charSize = TextRenderer.MeasureText("W", font, Size.Empty, TextFormatFlags.NoPadding);
-            int lineHeight = Math.Max(1, charSize.Height + 2);
-            int maxLines = Math.Max(1, (containerSize.Height - 8) / lineHeight);
-            int maxChars = Math.Max(10, (containerSize.Width - 8) / Math.Max(1, charSize.Width));
-            return (maxLines, maxChars);
-        }
-
-        public void StartNarrative(IEnumerable<string> driverLogs)
-        {
-            _narrativeQueue.Clear();
-            _rtb.Clear();
-            _stage = PromptStage.Narrative;
-
-            var capacity = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
-            int separatorLen = Math.Min(50, capacity.MaxChars);
-
-            _narrativeQueue.Enqueue("HYDRA OS Kernel Shell v0.0.1 [tty1]");
-            _narrativeQueue.Enqueue(new string('-', separatorLen));
-
-            if (driverLogs != null)
+            _cursorTimer = new Timer { Interval = 530 };
+            _cursorTimer.Tick += (s, e) =>
             {
-                foreach (var log in driverLogs)
+                if (_state != TerminalState.BootNarrative)
+                {
+                    _cursorVisible = !_cursorVisible;
+                    RenderBuffer();
+                }
+            };
+
+            this.Resize += (s, e) => RenderBuffer();
+        }
+
+        private void BeginUpdate()
+        {
+            if (_rtb.IsHandleCreated)
+                SendMessage(_rtb.Handle, WM_SETREDRAW, IntPtr.Zero, IntPtr.Zero);
+        }
+
+        private void EndUpdate()
+        {
+            if (_rtb.IsHandleCreated)
+            {
+                SendMessage(_rtb.Handle, WM_SETREDRAW, (IntPtr)1, IntPtr.Zero);
+                _rtb.Invalidate();
+            }
+        }
+
+        public static (int MaxLines, int MaxChars) GetTerminalCapacity(Font font, Size containerSize)
+        {
+            using (Graphics g = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                SizeF charSize = g.MeasureString("W", font);
+                int maxLines = Math.Max(4, (int)(containerSize.Height / charSize.Height) - 1);
+                int maxChars = Math.Max(20, (int)(containerSize.Width / charSize.Width) - 2);
+                return (maxLines, maxChars);
+            }
+        }
+
+        public void StartNarrative(IEnumerable<string> bootLogs)
+        {
+            _lineBuffer.Clear();
+            _narrativeQueue.Clear();
+            _activeDecodeFrames = null;
+            _activeDecodeIndex = 0;
+            _currentInput = string.Empty;
+            _state = TerminalState.BootNarrative;
+
+            _narrativeQueue.Enqueue("HYDRA OS Kernel Shell v0.0.2 [tty1]");
+            _narrativeQueue.Enqueue("--------------------------------------------------");
+
+            if (bootLogs != null)
+            {
+                foreach (var log in bootLogs)
                     _narrativeQueue.Enqueue(log);
             }
 
-            _narrativeQueue.Enqueue("[OK] Keelix voice and session engines online.");
-            _narrativeQueue.Enqueue(_vault.HasVault
-                ? "[OK] Encrypted AppData vault located."
-                : "[INIT] First boot setup: enter credentials to create SU vault.");
-            _narrativeQueue.Enqueue("[READY] Authentication required to mount Desktop.");
-            _narrativeQueue.Enqueue("");
+            _isFirstTimeSetup = !_vault.HasVault;
+            _narrativeQueue.Enqueue("[OK] Core services initialized.");
+            _narrativeQueue.Enqueue(_isFirstTimeSetup
+                ? "[READY] First-time cryptographic vault setup required."
+                : "[READY] Authentication required to mount Desktop.");
 
-            _voice.SpeakAsync("Hydra core initialized. Keelix subsystems online. Please authenticate.", interruptCurrent: true);
+            _narrativeTimer.Interval = 120;
             _narrativeTimer.Start();
+            _cursorTimer.Start();
+            _rtb.Focus();
+        }
+
+        public void ResetToLoginPrompt()
+        {
+            _currentInput = string.Empty;
+            _pendingUsername = string.Empty;
+            _isFirstTimeSetup = !_vault.HasVault;
+            AppendLine("[READY] Session closed. Authentication required.");
+            TransitionToUsernamePrompt();
+            _rtb.Focus();
         }
 
         private void NarrativeTimer_Tick(object sender, EventArgs e)
         {
+            if (_activeDecodeFrames != null && _activeDecodeIndex < _activeDecodeFrames.Count)
+            {
+                if (_lineBuffer.Count > 0)
+                {
+                    _lineBuffer[_lineBuffer.Count - 1] = _activeDecodeFrames[_activeDecodeIndex];
+                    RenderBuffer();
+                }
+
+                _activeDecodeIndex++;
+                if (_activeDecodeIndex >= _activeDecodeFrames.Count)
+                {
+                    _activeDecodeFrames = null;
+                    _narrativeTimer.Interval = 160;
+                }
+                return;
+            }
+
             if (_narrativeQueue.Count > 0)
             {
-                string line = _narrativeQueue.Dequeue();
-                AppendColoredLine(line);
+                string nextLine = _narrativeQueue.Dequeue();
+                var (_, maxChars) = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
+                if (nextLine.Length > maxChars)
+                    nextLine = nextLine.Substring(0, maxChars - 3) + "...";
+
+                if (nextLine.StartsWith("---"))
+                {
+                    AppendLine(nextLine);
+                }
+                else
+                {
+                    _activeDecodeFrames = HydraLanguageService.BuildDecodeFrames(nextLine, 7);
+                    _activeDecodeIndex = 1;
+                    _lineBuffer.Add(_activeDecodeFrames[0]);
+                    RenderBuffer();
+                    _narrativeTimer.Interval = 26;
+                }
             }
             else
             {
                 _narrativeTimer.Stop();
-                _session.BeginAuthentication();
-                BeginUsernamePrompt();
+                TransitionToUsernamePrompt();
             }
         }
 
-        private void AppendColoredLine(string text)
+        private void TransitionToUsernamePrompt()
         {
-            var capacity = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
+            _state = TerminalState.AwaitingUsername;
+            _currentInput = string.Empty;
+            _cursorVisible = true;
+            _session.BeginAuthentication();
 
-            if (text.Length > capacity.MaxChars)
-                text = text.Substring(0, capacity.MaxChars - 3) + "...";
+            if (_isFirstTimeSetup)
+                _voice.SpeakAsync("Welcome to Hydra Core. Please create your master username.");
+            else
+                _voice.SpeakAsync("Hydra core online. Please identify yourself.");
 
-            EnforceMaxLinesBuffer(capacity.MaxLines);
-
-            Color color = Color.FromArgb(210, 220, 230);
-            if (text.StartsWith("[OK]") || text.StartsWith("[READY]") || text.StartsWith("[INIT]"))
-                color = Color.FromArgb(0, 215, 255);
-            else if (text.Contains("ERROR") || text.Contains("Warning"))
-                color = Color.FromArgb(255, 110, 90);
-
-            _rtb.SelectionStart = _rtb.TextLength;
-            _rtb.SelectionLength = 0;
-            _rtb.SelectionColor = color;
-            _rtb.AppendText(text + Environment.NewLine);
+            RenderBuffer();
         }
 
-        private void EnforceMaxLinesBuffer(int maxLines)
+        private void Rtb_KeyDown(object sender, KeyEventArgs e)
         {
-            int allowedLines = Math.Max(2, maxLines - 2);
-            while (_rtb.Lines.Length >= allowedLines)
-            {
-                int firstLineEnd = _rtb.Text.IndexOf('\n');
-                if (firstLineEnd < 0) break;
-
-                _rtb.Select(0, firstLineEnd + 1);
-                _rtb.SelectedText = string.Empty;
-            }
-        }
-
-        private void BeginUsernamePrompt()
-        {
-            var capacity = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
-            EnforceMaxLinesBuffer(capacity.MaxLines);
-
-            _stage = PromptStage.Username;
-            _enteredUser = string.Empty;
-            WritePromptPrefix(GetHostPrompt(), "username: ");
-            _rtb.Focus();
-        }
-
-        private void BeginPasswordPrompt()
-        {
-            var capacity = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
-            EnforceMaxLinesBuffer(capacity.MaxLines);
-
-            _stage = PromptStage.Password;
-            _enteredPass = string.Empty;
-            WritePromptPrefix(GetHostPrompt(), "password: ");
-            _rtb.Focus();
-        }
-
-        private void WritePromptPrefix(string hostPrefix, string label)
-        {
-            _rtb.SelectionStart = _rtb.TextLength;
-            _rtb.SelectionColor = Color.FromArgb(120, 220, 140);
-            _rtb.AppendText(hostPrefix);
-
-            _rtb.SelectionStart = _rtb.TextLength;
-            _rtb.SelectionColor = Color.White;
-            _rtb.AppendText(label);
-
-            _inputStartIndex = _rtb.TextLength;
-        }
-
-        private void Rtb_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (_stage != PromptStage.Username && _stage != PromptStage.Password)
+            if (_state == TerminalState.BootNarrative)
             {
                 e.Handled = true;
                 return;
             }
 
-            e.Handled = true;
-
-            if (e.KeyChar == (char)Keys.Back)
+            if (e.KeyCode == Keys.Back)
             {
-                if (_stage == PromptStage.Username && _enteredUser.Length > 0)
+                if (_currentInput.Length > 0)
                 {
-                    _enteredUser = _enteredUser.Substring(0, _enteredUser.Length - 1);
-                    RemoveLastChar();
+                    _currentInput = _currentInput.Substring(0, _currentInput.Length - 1);
+                    _cursorVisible = true;
+                    RenderBuffer();
                 }
-                else if (_stage == PromptStage.Password && _enteredPass.Length > 0)
-                {
-                    _enteredPass = _enteredPass.Substring(0, _enteredPass.Length - 1);
-                    RemoveLastChar();
-                }
-                return;
+                e.Handled = true;
             }
-
-            if (char.IsControl(e.KeyChar)) return;
-
-            if (_stage == PromptStage.Username)
+            else if (e.KeyCode == Keys.Enter)
             {
-                _enteredUser += e.KeyChar;
-                AppendRawText(e.KeyChar.ToString());
-            }
-            else if (_stage == PromptStage.Password)
-            {
-                _enteredPass += e.KeyChar;
-                AppendRawText("*");
-            }
-        }
-
-        private void Rtb_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && (_stage == PromptStage.Username || _stage == PromptStage.Password))
-            {
+                e.Handled = true;
                 e.SuppressKeyPress = true;
-                AppendRawText(Environment.NewLine);
-
-                if (_stage == PromptStage.Username)
-                {
-                    if (string.IsNullOrWhiteSpace(_enteredUser))
-                        BeginUsernamePrompt();
-                    else
-                        BeginPasswordPrompt();
-                }
-                else if (_stage == PromptStage.Password)
-                {
-                    ValidateCredentials();
-                }
+                HandleEnterKey();
             }
         }
 
-        private void ValidateCredentials()
+        private void Rtb_KeyPress(object sender, KeyPressEventArgs e)
         {
-            string cleanUser = _enteredUser.Trim();
-
-            if (!_vault.HasVault)
+            if (_state == TerminalState.BootNarrative)
             {
-                _vault.InitializeFirstSuperUser(cleanUser, _enteredPass, _driver.SqlitePath);
-                _session.StartSession(cleanUser, "su");
-                _stage = PromptStage.Authenticated;
-
-                AppendColoredLine($"[OK] SU Vault created in AppData and '{cleanUser}' registered in SQLite.");
-                WriteHydraSessionReady(cleanUser);
-                _voice.SpeakAsync($"Super user vault created. Welcome to Hydra, {cleanUser}.", interruptCurrent: true);
-
-                LoginSucceeded?.Invoke(cleanUser);
+                e.Handled = true;
                 return;
             }
 
-            if (_vault.AuthenticateAndTouchSqlite(cleanUser, _enteredPass, _driver.SqlitePath))
+            if (!char.IsControl(e.KeyChar))
             {
-                _session.StartSession(cleanUser, "su");
-                _stage = PromptStage.Authenticated;
-                AppendColoredLine($"[OK] Vault unlocked. Welcome back, {cleanUser} [su].");
-                WriteHydraSessionReady(cleanUser);
-                _voice.SpeakAsync($"Vault unlocked. Welcome back, {cleanUser}. Mounting desktop.", interruptCurrent: true);
-                LoginSucceeded?.Invoke(cleanUser);
-            }
-            else
-            {
-                _session.LogEvent("AUTH_FAILED", $"Failed login attempt for '{cleanUser}'.");
-                AppendColoredLine("[ERROR] Vault decryption failed: invalid username or password.");
-                _voice.SpeakAsync("Access denied. Invalid credentials.", interruptCurrent: true);
-                BeginUsernamePrompt();
+                _currentInput += e.KeyChar;
+                _cursorVisible = true;
+                RenderBuffer();
+                e.Handled = true;
             }
         }
-        private void WriteHydraSessionReady(string username)
+
+        private void HandleEnterKey()
         {
-            _rtb.SelectionStart = _rtb.TextLength;
-            _rtb.SelectionColor = Color.FromArgb(0, 215, 255);
-            _rtb.AppendText(GetHydraPrompt(username) + "Mounting Desktop environment..." + Environment.NewLine);
+            string submitted = _currentInput.Trim();
+
+            if (_state == TerminalState.AwaitingUsername)
+            {
+                AppendLine($"{GetPromptPrefix()}{submitted}");
+                _currentInput = string.Empty;
+
+                if (string.IsNullOrWhiteSpace(submitted))
+                {
+                    AppendLine("[!] Username cannot be empty.");
+                    RenderBuffer();
+                    return;
+                }
+
+                _pendingUsername = submitted;
+                _state = TerminalState.AwaitingPassword;
+                _voice.SpeakAsync(_isFirstTimeSetup ? "Set your encryption key." : "Enter access key.");
+                RenderBuffer();
+            }
+            else if (_state == TerminalState.AwaitingPassword)
+            {
+                string masked = new string('*', submitted.Length);
+                AppendLine($"{GetPromptPrefix()}{masked}");
+                _currentInput = string.Empty;
+                if (string.IsNullOrWhiteSpace(submitted))
+                {
+                    AppendLine("[!] Password cannot be empty.");
+                    RenderBuffer();
+                    return;
+                }
+                if (_isFirstTimeSetup)
+                {
+                    _vault.InitializeFirstSuperUser(_pendingUsername, submitted, _sqlitePath);
+                    _session.StartSession(_pendingUsername, "su");
+                    _events.Record("SYS_VAULT_INIT", $"Master vault created for {_pendingUsername}");
+                    AppendLine($"[OK] Vault encrypted. Superuser '{_pendingUsername}' registered.");
+                    AppendLine("[OK] Mounting Desktop environment...");
+                    _voice.SpeakAsync($"Master vault created. Access granted, {_pendingUsername}.");
+                    _state = TerminalState.InteractiveShell;
+                    RenderBuffer();
+                    LoginSucceeded?.Invoke(_pendingUsername);
+                }
+                else
+                {
+                    if (_vault.AuthenticateAndTouchSqlite(_pendingUsername, submitted, _sqlitePath))
+                    {
+                        _session.StartSession(_pendingUsername, "su");
+                        _events.Record("SYS_LOGIN_OK", $"User {_pendingUsername} [su] authenticated");
+                        AppendLine($"[OK] Access granted. Welcome back, {_pendingUsername} [su].");
+                        AppendLine("[OK] Mounting Desktop environment...");
+                        _voice.SpeakAsync($"User authenticated. Welcome back, {_pendingUsername}.", interruptCurrent: true);
+                        _state = TerminalState.InteractiveShell;
+                        RenderBuffer();
+                        LoginSucceeded?.Invoke(_pendingUsername);
+                    }
+                    else
+                    {
+                        _session.LogEvent("AUTH_FAILED", $"Invalid credentials for '{_pendingUsername}'");
+                        _events.Record("SYS_LOGIN_FAIL", $"Failed login attempt for {_pendingUsername}");
+                        AppendLine("[DENIED] Invalid username or password.");
+                        _voice.SpeakAsync("Access denied.");
+                        _state = TerminalState.AwaitingUsername;
+                        RenderBuffer();
+                    }
+                }
+            }
+            else if (_state == TerminalState.InteractiveShell)
+            {
+                AppendLine($"{GetPromptPrefix()}{submitted}");
+                _currentInput = string.Empty;
+                if (!string.IsNullOrWhiteSpace(submitted))
+                {
+                    var result = _commands.Execute(submitted);
+                    if (result.Action == TerminalAction.ClearScreen)
+                    {
+                        _lineBuffer.Clear();
+                        RenderBuffer();
+                        return;
+                    }
+                    if (!string.IsNullOrWhiteSpace(result.Output))
+                    {
+                        foreach (string line in result.Output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+                            AppendLine(line);
+                    }
+                    if (!string.IsNullOrWhiteSpace(result.SpeechText))
+                        _voice.SpeakAsync(result.SpeechText);
+                    RenderBuffer();
+                    switch (result.Action)
+                    {
+                        case TerminalAction.LogOut:
+                            _events.Record("SYS_LOGOUT", "User logged out via CLI");
+                            LogoutRequested?.Invoke();
+                            break;
+                        case TerminalAction.Reboot:
+                            _events.Record("SYS_REBOOT", "System reboot requested via CLI");
+                            RebootRequested?.Invoke();
+                            break;
+                        case TerminalAction.PowerOff:
+                            _events.Record("SYS_POWEROFF", "System poweroff requested via CLI");
+                            PowerOffRequested?.Invoke();
+                            break;
+                    }
+                    return;
+                }
+                RenderBuffer();
+            }
         }
-        private void AppendRawText(string text)
+        private string GetPromptPrefix()
+        {
+            switch (_state)
+            {
+                case TerminalState.AwaitingUsername:
+                    return _isFirstTimeSetup ? "create username: " : "username: ";
+                case TerminalState.AwaitingPassword:
+                    return _isFirstTimeSetup ? "create password: " : "password: ";
+                case TerminalState.InteractiveShell:
+                    string user = string.IsNullOrWhiteSpace(_session.ActiveUsername) ? "user" : _session.ActiveUsername;
+                    return $"hydra@{user}:~$ ";
+                default:
+                    return "home@carlo:~$ ";
+            }
+        }
+        private void AppendLine(string text)
+        {
+            var (_, maxChars) = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
+            if (text.Length > maxChars)
+                text = text.Substring(0, maxChars - 3) + "...";
+            _lineBuffer.Add(text);
+            RenderBuffer();
+        }
+        private void RenderBuffer()
+        {
+            if (_rtb.IsDisposed) return;
+            BeginUpdate();
+            try
+            {
+                var (maxLines, _) = GetTerminalCapacity(_rtb.Font, _rtb.ClientSize);
+                bool showPrompt = _state != TerminalState.BootNarrative;
+                int availableHistoryLines = showPrompt ? Math.Max(1, maxLines - 1) : maxLines;
+                var visibleLines = _lineBuffer
+                .Skip(Math.Max(0, _lineBuffer.Count - availableHistoryLines))
+                .ToList();
+                if (showPrompt)
+                {
+                    string displayInput = (_state == TerminalState.AwaitingPassword)
+                    ? new string('*', _currentInput.Length)
+                    : _currentInput;
+                    string cursor = _cursorVisible ? "|" : " ";
+                    visibleLines.Add($"{GetPromptPrefix()}{displayInput}{cursor}");
+                }
+                _rtb.Clear();
+                for (int i = 0; i < visibleLines.Count; i++)
+                {
+                    string line = visibleLines[i];
+                    if (i > 0) _rtb.AppendText(Environment.NewLine);
+                    if (line.StartsWith("[OK]"))
+                    {
+                        AppendColored("[OK]", Color.MediumTurquoise);
+                        _rtb.AppendText(line.Substring(4));
+                    }
+                    else if (line.StartsWith("[READY]"))
+                    {
+                        AppendColored("[READY]", Color.DeepSkyBlue);
+                        _rtb.AppendText(line.Substring(7));
+                    }
+                    else if (line.StartsWith("[!]"))
+                    {
+                        AppendColored("[!]", Color.Gold);
+                        _rtb.AppendText(line.Substring(3));
+                    }
+                    else if (line.StartsWith("[DENIED]") || line.StartsWith("[ERROR]"))
+                    {
+                        int closeIdx = line.IndexOf(']');
+                        if (closeIdx > 0)
+                        {
+                            AppendColored(line.Substring(0, closeIdx + 1), Color.OrangeRed);
+                            _rtb.AppendText(line.Substring(closeIdx + 1));
+                        }
+                        else
+                        {
+                            AppendColored(line, Color.OrangeRed);
+                        }
+                    }
+                    else if (line.StartsWith("◈") || line.StartsWith("⧗") || line.StartsWith("⧖"))
+                    {
+                        AppendColored(line, Color.FromArgb(95, 195, 225));
+                    }
+                    else
+                    {
+                        _rtb.AppendText(line);
+                    }
+                }
+            }
+            finally
+            {
+                EndUpdate();
+            }
+        }
+        private void AppendColored(string text, Color color)
         {
             _rtb.SelectionStart = _rtb.TextLength;
-            _rtb.SelectionColor = Color.FromArgb(0, 230, 255);
+            _rtb.SelectionLength = 0;
+            _rtb.SelectionColor = color;
             _rtb.AppendText(text);
-        }
-        private void RemoveLastChar()
-        {
-            if (_rtb.TextLength > _inputStartIndex)
-            {
-                _rtb.SelectionStart = _rtb.TextLength - 1;
-                _rtb.SelectionLength = 1;
-                _rtb.SelectedText = string.Empty;
-            }
+            _rtb.SelectionColor = _rtb.ForeColor;
         }
     }
 }
-
