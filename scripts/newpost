@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'fileutils'
+
+POSTS_DIR = './_posts/'
+
+post = ARGV[0]
+
+if post.nil?
+  puts "[-] Erro: Esqueceu-se do nome do ficheiro! Use: ./scripts/newpost nome-do-ficheiro"
+  exit
+end
+
+puts "=== Criar Novo Post / Documento ==="
+
+print "Introduza o título (title): "
+title = STDIN.gets.chomp
+title = "Title" if title.empty?
+
+print "Introduza a categoria (category): "
+category = STDIN.gets.chomp
+category = "general" if category.empty?
+
+print "Introduza o autor (author): "
+author = STDIN.gets.chomp
+author = "Carlos" if author.empty?
+
+print "Introduza as tags (separadas por vírgula): "
+tags_input = STDIN.gets.chomp
+
+formatted_tags = tags_input.split(',').map { |t| "\"#{t.strip}\"" }.join(', ')
+
+FileUtils.mkdir_p(POSTS_DIR) unless Dir.exist?(POSTS_DIR)
+
+filename = POSTS_DIR + Date.today.strftime("%Y-%m-%d-") + post + '.md'
+
+File.open(filename, 'w') do |f|
+  f.write("---\n")
+  f.write("layout: posts\n")
+  f.write("title: \"#{title}\"\n")
+  f.write("category: \"#{category}\"\n")
+  f.write("author: \"#{author}\"\n")
+  f.write("tags: [#{formatted_tags}]\n") unless tags_input.empty?
+  f.write("---\n\n")
+  f.write("# #{title}\n\n")
+end
+
+puts "[+] Criado com sucesso: #{filename}"

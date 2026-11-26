@@ -1,0 +1,7 @@
+[
+  { "tecnologia": "JavaScript", "horas": 10, "projeto": "Site A" },
+  { "tecnologia": "JavaScript", "horas": 15, "projeto": "Site B" },
+  { "tecnologia": "TypeScript", "horas": 20, "projeto": "App X" },
+  { "tecnologia": "Python", "horas": 12, "projeto": "Bot Y" },
+  { "tecnologia": "HTML", "horas": 5, "projeto": "Landing Page" }
+]

@@ -1,0 +1,46 @@
+const fs = require('fs');
+
+async function updateReadme() {
+  // Substitui pelo teu nome de utilizador do GitHub
+  const username = 'TEU_UTILIZADOR_GITHUB'; 
+  
+  try {
+    // 1. Procura todos os teus repositórios públicos
+    const response = await fetch(`https://github.com{username}/repos?per_page=100`);
+    const repos = await response.json();
+    
+    // 2. Lógica Pivot: Agrega a contagem da linguagem principal de cada repositório
+    const languageCounts = {};
+    repos.forEach(repo => {
+      if (repo.language) {
+        languageCounts[repo.language] = (languageCounts[repo.language] || 0) + 1;
+      }
+    });
+
+    // 3. Constrói a estrutura do gráfico Mermaid Pie
+    let mermaidChart = '```mermaid\n';
+    mermaidChart += 'pie title "Distribuição de Repositórios por Linguagem Principal"\n';
+    for (const [lang, count] of Object.entries(languageCounts)) {
+      mermaidChart += `    "${lang}" : ${count}\n`;
+    }
+    mermaidChart += '```';
+
+    // 4. Injeta dinamicamente no README.md entre os marcadores
+    const readmePath = './README.md';
+    let readmeContent = fs.readFileSync(readmePath, 'utf8');
+    
+    const startMarker = '<!-- PIVOT_CHART_START -->';
+    const endMarker = '<!-- PIVOT_CHART_END -->';
+    
+    const pattern = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`);
+    const updatedContent = readmeContent.replace(pattern, `${startMarker}\n${mermaidChart}\n${endMarker}`);
+    
+    fs.writeFileSync(readmePath, updatedContent);
+    console.log('Gráfico atualizado com sucesso!');
+    
+  } catch (error) {
+    console.error('Erro ao processar dados do GitHub:', error);
+  }
+}
+
+updateReadme();

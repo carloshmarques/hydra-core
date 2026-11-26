@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Verifica argumento
+if [ -z "$1" ]; then
+    echo "[-] Erro: Falta o nome do projeto. Use: ./newdoc NomeDoProjeto"
+    exit 1
+fi
+
+PROJECT="$1"
+
+# Cria a pasta do projeto
+mkdir -p "$PROJECT"
+cd "$PROJECT" || exit
+
+# README.md
+cat <<EOF > README.md
+# $PROJECT
+
+## 📌 Sobre
+Descrição breve do projeto.
+
+## 📁 Estrutura
+\`\`\`tree
+📁 $PROJECT/
+│
+├── 📄 README.md
+├── 📄 CHANGELOG.md
+├── 📄 .gitignore
+├── 📄 .gitattributes
+└── 📁 .github/
+    └── 📁 workflows/
+\`\`\`
+
+## 🚀 Instalação
+Passos de instalação.
+
+## 🔧 Uso
+Exemplos de utilização.
+
+## 🧩 Módulos
+- TerminalEngine
+- HydraLife
+- HydraAero
+- HostSync
+- Crypto
+
+## 📜 Licença
+Definir licença aqui.
+EOF
+
+# CHANGELOG.md
+cat <<EOF > CHANGELOG.md
+# Changelog
+
+## [0.0.1] - Inicial
+- Estrutura base criada automaticamente pelo newdoc.sh
+EOF
+
+# .gitignore
+cat <<EOF > .gitignore
+# Ignore padrão
+*.log
+*.tmp
+*.cache
+EOF
+
+# .gitattributes
+cat <<EOF > .gitattributes
+* text=auto
+EOF
+
+# GitHub workflows
+mkdir -p .github/workflows
+touch .github/workflows/placeholder.yml
+
+echo "[+] Projeto '$PROJECT' criado com sucesso."
